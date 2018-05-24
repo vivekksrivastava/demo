@@ -1,0 +1,7 @@
+com\demo\demonstration\controller\ControllerClass.class
+com\demo\demonstration\security\CustomLoginFailureHandler.class
+com\demo\demonstration\service\CategoryProductMap.class
+com\demo\demonstration\MainClass.class
+com\demo\demonstration\restController\DemonstrationRestController.class
+com\demo\demonstration\model\Product.class
+com\demo\demonstration\security\SecurityConfiguration.class
