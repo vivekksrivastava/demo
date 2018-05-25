@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.demo.demonstration.model.Product;
 import com.demo.demonstration.service.CategoryProductMap;
 
-@RestController
+@RestController("/demonstration")
 public class DemonstrationRestController {
 	
 	@Autowired

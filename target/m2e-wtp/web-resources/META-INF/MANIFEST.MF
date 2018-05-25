@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: demonstration
+Implementation-Version: 1.0.0
+Built-By: vivek-s
+Implementation-Vendor-Id: com.demo
+Build-Jdk: 1.8.0_25
+Implementation-URL: http://localhost:8080/
+Created-By: Maven Integration for Eclipse
+

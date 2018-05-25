@@ -8,7 +8,7 @@
 </head>
 <body>
 <span id="error" style="color:red"></span>
-<form action="/login" method="post">
+<form action="/demonstration/login" method="post">
 Username: <input type="text" name="username" required/>
 Password: <input type="password" name="password" required/>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

@@ -68,7 +68,7 @@ $(document).ready(function(){
 	
 	 $.ajax({
 	        type: 'GET',
-	        url: 'http://localhost:8080/products',
+	        url: 'http://localhost:8080/demonstration/products',
 	        //data: $('#data').serialize(),
 	        dataType:"json", //to parse string into JSON object,
 	        success: function(data){ 
@@ -105,7 +105,7 @@ $(document).ready(function(){
 			$("#table").empty();
 			 $.ajax({
 			        type: 'GET',
-			        url: 'http://localhost:8080/delete?id='+id+'&category='+category,
+			        url: 'http://localhost:8080/demonstration/delete?id='+id+'&category='+category,
 			        //data: $('#data').serialize(),
 			        dataType:"json", //to parse string into JSON object,
 			        success: function(data){ 

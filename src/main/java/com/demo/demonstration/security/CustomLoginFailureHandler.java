@@ -21,7 +21,7 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception)
 			throws IOException, ServletException {
 		request.setAttribute("exception", exception);
-		 redirectStrategy.sendRedirect(request, response, "/error?msg=Bad Credentials");
+		 redirectStrategy.sendRedirect(request, response, "/Demonstration/error?msg="+exception);
 	}
 
 }
