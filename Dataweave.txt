@@ -1,0 +1,28 @@
+%dw 1.0
+%output application/java
+%var lob = payload[1] groupBy ($.siteSystemID default '')
+%var offering = payload[2] groupBy ($.lineOfBusinessSystemIDCode default '')
+%var offeringAttr = payload[3] groupBy ($.offeringSystemIDCode default '')
+%var geocodes = payload[4] groupBy ($.siteSystemIdCode default '')
+%var merchantid = payload[5] groupBy ($.lineOfBusinessSystemID default '')
+%var hoursOfOperation = payload[6] groupBy ($.lineOfBusinessSystemIDCode default '')
+---
+payload[0] map {
+	($),
+	lineOfBusinessArray: (lob[$.siteSystemId] map {
+		($ pluck {
+			($$):$
+		}),
+		offeringArray: (offering[$.lineOfBusinessSystemId] map using (offeringReferenceIDCode=$.offeringReferenceIDCode){
+			shareViaPartnerApi: (payload[7] filter (offeringReferenceIDCode == $.offeringReferenceID) map $.shareViaPartnerAPI)[0],
+			($),
+			offeringAttributeArray: (offeringAttr[$.offeringSystemID] map using (offeringAttributeReferenceIDCode=$.offeringAttributeReferenceIDCode){
+				sharePublicly: (payload[8] filter (offeringAttributeReferenceIDCode == $.offeringAttributeReferenceID) map $.sharePublicly)[0],
+				($)
+			}) when (offeringAttr[$.offeringSystemID]) !=null otherwise []
+		}) when (offering[$.lineOfBusinessSystemId]) !=null otherwise [],
+		merchantIDArray: merchantid[$.lineOfBusinessSystemId] default [],
+		hoursOfOperationArray: hoursOfOperation[$.lineOfBusinessSystemId] default []
+	}) when (lob[$.siteSystemId]) !=null otherwise [],
+	geocodesArray: (geocodes[$.siteSystemId]) default []
+}
